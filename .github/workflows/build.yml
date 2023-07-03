@@ -1,8 +1,8 @@
-name: Magisk Build
+name: Magisk Build 64-bit
 
 on:
   push:
-    branches: [master]
+    branches: [ 64-bit ]
     paths:
       - "app/**"
       - "native/**"
@@ -12,7 +12,7 @@ on:
       - "gradle.properties"
       - ".github/workflows/build.yml"
   pull_request:
-    branches: [master]
+    branches: [ 64-bit ]
   workflow_dispatch:
 
 jobs:
