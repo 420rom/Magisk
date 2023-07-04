@@ -1,8 +1,8 @@
-name: Magisk Build
+name: Magisk Build 64-bit Delta
 
 on:
   push:
-    branches: [master]
+    branches: [ 64-bit_Delta ]
     paths:
       - "app/**"
       - "native/**"
@@ -12,7 +12,7 @@ on:
       - "gradle.properties"
       - ".github/workflows/build.yml"
   pull_request:
-    branches: [master]
+    branches: [ 64-bit_Delta ]
   workflow_dispatch:
 
 jobs:
@@ -47,18 +47,13 @@ jobs:
         with:
           python-version: "3.x"
 
-      - name: Set up ccache
-        uses: hendrikmuhs/ccache-action@v1.2
-        with:
-          key: ${{ runner.os }}-${{ github.sha }}
-          restore-keys: ${{ runner.os }}
-
       - name: Set up sccache
         uses: hendrikmuhs/ccache-action@v1.2
         with:
           variant: sccache
           key: ${{ runner.os }}-${{ github.sha }}
           restore-keys: ${{ runner.os }}
+          max-size: 10000M
 
       - name: Cache Gradle dependencies
         uses: actions/cache@v3
